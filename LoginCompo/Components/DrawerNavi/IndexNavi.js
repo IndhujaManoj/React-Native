@@ -2,16 +2,17 @@ import {View, Text, StyleSheet, Image, TouchableOpacity,Animated} from 'react-na
 import React, {useRef, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import profile from '../../Images/profile.jpeg';
-import home from '../../Images/home.png';
-import chat from '../../Images/chats.png';
-import find from '../../Images/find.png';
-import post from '../../Images/post.png';
-import settings from '../../Images/settings.png';
+
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faBars,  faX,faHome,faMessage,faSearch,faRocket,faPowerOff,faCog} from '@fortawesome/free-solid-svg-icons';
 import Logout from './Screen/Logout';
+import Home from './Screen/Home';
+import Chat from './Screen/Chat';
+import Find from './Screen/Find';
+import Post from './Screen/Post';
 
 const IndexNavi = () => {
+
   const [currentTab, setCurrentTab] = useState('Home');
   const [showMenu,setShowMenu]=useState(false)
   //Animated Properties
@@ -64,9 +65,11 @@ const IndexNavi = () => {
             {translateX:offsetValue}
           ]
         }}>
-       <Animated.View style={{transform:[{
+       <Animated.View 
+       style={{transform:[{
         translateY:closeButtonOffset
-       }]}}>
+       }]}}
+       >
        <TouchableOpacity onPress={()=>{
           Animated.timing(scaleValue,{
             toValue:showMenu ? 1: 0.88,
@@ -99,41 +102,24 @@ const IndexNavi = () => {
           />
           
         </TouchableOpacity>
-        {/* <Text
-            style={{
-              fontSize: 30,
-              fontWeight: 'bold',
-              color: 'black',
-              paddingTop: 20,
-            }}>
-            {currentTab}
-          </Text>
-          <Image
-            source={profile}
-            style={{
-              width: '100%',
-              height: 300,
-              borderRadius: 15,
-              marginTop: 20,
-            }}
-          />
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-              paddingTop: 15,
-              paddingBottom:5,
-              color:'black'
-            }}>
-            Indhuja
-          </Text>
 
-          <Text
-            style={{
-              color:'black'
-            }}>
-            This is a Drawer Icon For React Native Projects.
-          </Text> */}
+         <View>
+  {(() => {
+    switch (currentTab) {
+      case 'Chat':
+        return <Chat />;
+      case 'Find':
+        return <Find />;
+      case 'Post':
+        return <Post/>;
+      case 'LogOut':
+        return <Logout />;
+      default:
+        return <Home />;
+    }
+  })()}
+</View>
+
        </Animated.View>
       </Animated.View>
     </SafeAreaView>
@@ -144,7 +130,7 @@ const TabButton = (currentTab, setCurrentTab, title, image) => {
     <TouchableOpacity
       onPress={() => {
         if (title == 'Logout') {
-          
+            // navigate('Home')
         } else {
           setCurrentTab(title);
         }
@@ -178,7 +164,7 @@ const TabButton = (currentTab, setCurrentTab, title, image) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'orange',
+    backgroundColor: 'rgb(255,170,51)',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },

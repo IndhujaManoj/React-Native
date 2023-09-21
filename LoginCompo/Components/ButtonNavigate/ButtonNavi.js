@@ -8,7 +8,6 @@ import Post from './Screens/Post'
 import Settings from './Screens/Settings'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faHome, faMessage, faPlus, faRocket, faSearch, faWrench } from '@fortawesome/free-solid-svg-icons'
-import { faRocketchat } from '@fortawesome/free-brands-svg-icons'
 const Tab=createBottomTabNavigator()
 const CustomTabBarButton=({children,onPress})=>{
   return(

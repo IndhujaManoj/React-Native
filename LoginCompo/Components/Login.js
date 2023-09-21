@@ -11,8 +11,9 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import {Checkbox} from 'react-native-paper';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 function Login() {
-  const renderHeader = () => {
+    const renderHeader = () => {
     return (
       <View style={styles.headerContainer}>
         <View style={styles.backButtonContainer}>
@@ -36,10 +37,19 @@ function Login() {
       </View>
     );
   };
+  
   const loginButton = () => {
+    const navigation = useNavigation();
+  
+    const handleLogin = () => {
+      navigation.navigate('Home');
+      console.log('hi')
+    };
+  
     return (
-      <TouchableOpacity style={styles.button}>
-        <Text style={[styles.headingStyles, {color: 'white'}]}>Login</Text>
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <Text style={[styles.headingStyles, { color: 'white' }]}
+         >Login</Text>
       </TouchableOpacity>
     );
   };
