@@ -17,7 +17,7 @@ function Login() {
     return (
       <View style={styles.headerContainer}>
         <View style={styles.backButtonContainer}>
-          {/* <FontAwesomeIcon icon={faArrowLeft} /> */}
+          <FontAwesomeIcon icon={faArrowLeft} />
           <Text style={styles.headingStyles}>Back</Text>
         </View>
         <Text style={styles.headingStyles}>Login</Text>
